@@ -1,0 +1,2 @@
+127.0.0.1 - - [30/Jun/2019:12:19:48 +0800] "GET /rest/productCategories/list HTTP/1.1" 200 441 http-bio-8089-exec-1 411
+127.0.0.1 - - [30/Jun/2019:12:19:49 +0800] "GET /rest/product/list HTTP/1.1" 200 2108 http-bio-8089-exec-3 113

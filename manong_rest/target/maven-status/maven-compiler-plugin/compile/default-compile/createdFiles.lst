@@ -1,0 +1,6 @@
+com\manong\rest\service\ProductService.class
+com\manong\rest\service\ProductCategoriesService.class
+com\manong\rest\service\impl\ProductServiceImpl.class
+com\manong\rest\controller\ProductCategoriesController.class
+com\manong\rest\service\impl\ProductCategoriesServiceImpl.class
+com\manong\rest\controller\ProductController.class

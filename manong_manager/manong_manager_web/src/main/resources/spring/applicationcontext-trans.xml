@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+       xmlns:tx="http://www.springframework.org/schema/tx" xmlns:context="http://www.springframework.org/schema/context"
+       xmlns="http://www.springframework.org/schema/beans" xmlns:aop="http://www.springframework.org/schema/aop"
+       xmlns:conntext="http://www.springframework.org/schema/context"
+       xmlns:mvc="http://www.springframework.org/schema/mvc"
+       xsi:schemaLocation="http://www.springframework.org/schema/tx http://www.springframework.org/schema/tx/spring-tx-4.2.xsd http://www.springframework.org/schema/context http://www.springframework.org/schema/context/spring-context-4.2.xsd http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans-4.2.xsd
+       http://www.springframework.org/schema/aop http://www.springframework.org/schema/aop/spring-aop-4.2.xsd http://www.springframework.org/schema/mvc http://www.springframework.org/schema/mvc/spring-mvc.xsd">
+    <!--加载数据库配置文件-->
+    <conntext:property-placeholder location="classpath:properties/db.properties"/>
+    <!--定义bean-->
+    <!--用扫描controller-->
+    <context:component-scan base-package="com.manong.controller"/>
+    <mvc:annotation-driven></mvc:annotation-driven>
+    <bean class="org.springframework.web.servlet.view.InternalResourceViewResolver">
+        <property name="prefix" value="/WEB-INF/jsp/" />
+        <property name="suffix" value=".jsp"/>
+    </bean>
+    <!--事物管理 aop-->
+    <bean id="transactionManager" class="org.springframework.jdbc.datasource.DataSourceTransactionManager">
+        <property name="dataSource" ref="dataSource"/>
+    </bean>
+    <tx:advice id="txAdvice" transaction-manager="transactionManager">
+        <tx:attributes>
+            <tx:method name="save" propagation="REQUIRED"/>
+            <tx:method name="insert" propagation="REQUIRED"/>
+            <tx:method name="add" propagation="REQUIRED"/>
+            <tx:method name="create" propagation="REQUIRED"/>
+            <tx:method name="delete" propagation="REQUIRED"/>
+            <tx:method name="update" propagation="REQUIRED"/>
+            <tx:method name="find" propagation="SUPPORTS" read-only="true"/>
+            <tx:method name="select" propagation="SUPPORTS" read-only="true"/>
+            <tx:method name="get" propagation="SUPPORTS" read-only="true"/>
+        </tx:attributes>
+    </tx:advice>
+    <!--通知-->
+    <aop:config>
+        <aop:advisor advice-ref="txAdvice" pointcut="execution(*com.manong.service.*.*(..)" />
+    </aop:config>
+
+</beans>

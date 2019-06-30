@@ -1,0 +1,7 @@
+com\manong\portal\controller\FreemakerTest.class
+com\manong\portal\service\ProductService.class
+com\manong\portal\service\util\GsonUtils.class
+com\manong\portal\service\impl\CategoriesServiceImpl.class
+com\manong\portal\controller\IndexController.class
+com\manong\portal\service\CategoriesService.class
+com\manong\portal\service\impl\ProductImpl.class
