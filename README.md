@@ -1,0 +1,3 @@
+# ShopingOnline
+为了练习ssm框架的在线上场项目
+采用了easyui作为前端页面，ueditor作为富文本编辑器
